@@ -1,6 +1,6 @@
 const { getEnderecoCep } = require("../src/cep");
 
-describe("Teste o endereço do CEP", () => {
+describe("Teste o número do CEP", () => {
   test("Válida CEP", async () => {
     const data = await getEnderecoCep("31515-220");
     expect(data).toHaveProperty("cep", "31515-220");
@@ -13,10 +13,7 @@ describe("Teste o endereço do CEP", () => {
     expect(data).toHaveProperty("ddd", "31");
   });
 
-  
   test("CEP inválido", async () => {
-    await expect(getEnderecoCep("31515220")).rejects.toThrow(
-      "Inválido"
-    );
+    await expect(getEnderecoCep("31515220")).rejects.toThrow("Inválido");
   });
 });

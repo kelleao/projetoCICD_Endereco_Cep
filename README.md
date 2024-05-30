@@ -2,17 +2,18 @@
 
 ## Descrição:
 
-O meu projeto gerou do CEP, verifica o número cep válido e inválido em teste.
+Este projeto gerou do código Node.JS um serviço de BackEnd, implementa o formato de CEP no site do ViaCep. Verifica realiza de um fonte-código
+o número do cep sucesso e errado executa passando em testes unitário e integração e o fluxo de trabalho é conjunto de ação automatizada. Está configurado uma pipeline de CI/CD no GitHub Actions.
 
 ## Configuração do Projeto
 
-### 1. Criar a pasta
+### 1. Criar nova pasta
 
 ```bash
 C:\Projeto_Cep
 ```
 
-### 2. Inicialize do novo projeto no arquivo pacote json
+### 2. Inicia do novo projeto no arquivo pacote json
 
 ```bash
 npm init -y
@@ -30,9 +31,9 @@ npm install axios
 npm install --save-dev jest
 ```
 
-### 5. Implementar o código utiliza javaScript
+### 5. Implementar o código utiliza node.js
 
-Arquivo: `src/cep.js`
+### Arquivo: `src/cep.js`
 
 ```javascript
 const axios = require("axios");
@@ -55,9 +56,9 @@ module.exports = { Validar_CEP, getEnderecoCep };
 
 ## Escrita dos Testes Automatizados
 
-### Testes Unitários:
+### Testes Unitário:
 
-Arquivo: `tests/unidade.test.js`
+### Arquivo: `tests/unidade.test.js`
 
 ```javascript
 const { Validar_CEP } = require("../src/cep");
@@ -68,19 +69,19 @@ describe("Teste entre válido e inválido do CEP", () => {
   });
 
   test("Inválido CEP", () => {
-    expect(Validar_CEP("31515")).toBe(false);
+    expect(Validar_CEP("")).toBe(false);
   });
 });
 ```
 
 ### Testes de Integração:
 
-Arquivo: `tests/integracao.test.js`
+### Arquivo: `tests/integracao.test.js`
 
 ```javascript
 const { getEnderecoCep } = require("../src/cep");
 
-describe("Teste o endereço do CEP", () => {
+describe("Teste o número do CEP", () => {
   test("Válida CEP", async () => {
     const data = await getEnderecoCep("31515-220");
     expect(data).toHaveProperty("cep", "31515-220");
@@ -99,34 +100,11 @@ describe("Teste o endereço do CEP", () => {
 });
 ```
 
-## Configuração do GitHub Actions
+### Inicialize este repositório com:
 
-Crie o arquivo: `.github/workflows/cicd.yml`
+Adicione `.gitignore` colocar NODE do repositório, comando git pull origin main o para diretório de código.
 
-```yaml
-name: CI
-
-on: [push]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20.13.1"
-      - name: Install dependencies
-        run: npm install
-      - name: Tests unidade
-        run: npm test tests/unidade.test.js
-      - name: Tests integracao
-        run: npm test tests/integracao.test.js`
-```
-
-## Arquivo `.gitignore`
+### Arquivo `.gitignore`
 
 ```bash
 # Logs
@@ -261,11 +239,58 @@ dist
 .pnp.*
 ```
 
-## Como Funciona a Pipeline de CI/CD
+### Comando Git
 
-## Referências
+```bash
+git init
+git remote add https://github.com/kelleao/projetoCICD_Endereco_Cep.git
+git pull origin main
+git add .
+git commit -m "Alterar o projeto"
+git push origin master
 
-https://jestjs.io/pt-BR/docs/getting-started
-https://docs.github.com/pt/actions/automating-builds-and-tests/building-and-testing-nodejs
-https://viacep.com.br/
-https://nodejs.org/en
+```
+
+### Configuração do GitHub Actions
+
+### Arquivo: `.github/workflows/cicd.yml`
+
+```yaml
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.13.1"
+      - name: Install dependencies
+        run: npm install
+      - name: Tests unidade
+        run: npm test tests/unidade.test.js
+      - name: Tests integracao
+        run: npm test tests/integracao.test.js`
+```
+
+### Como Funciona a Pipeline de CI/CD
+
+A pipeline de integração contiuna é a configurada, passar executado e comando push para o branch direto para GitHub. O fluxo de trabalho como implementa
+
+1. Usar checkout,
+2. Configurar o node na versão 20.13.1,
+3. Instalar a despendencia,
+4. Executar o teste unidad,
+5. Executar o teste interagração.
+
+### Referências
+
+- [Jest] https://jestjs.io/pt-BR/docs/getting-started
+- [GitHubActions]https://docs.github.com/pt/actions/automating-builds-and-tests/building-and-testing-nodejs
+- [ViaCEP]https://viacep.com.br/
+- [Node.js]https://nodejs.org/en

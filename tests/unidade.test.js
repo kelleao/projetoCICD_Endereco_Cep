@@ -6,6 +6,6 @@ describe("Teste entre válido e inválido do CEP", () => {
   });
 
   test("Inválido CEP", () => {
-    expect(Validar_CEP("31515")).toBe(false);
+    expect(Validar_CEP("")).toBe(false);
   });
 });
