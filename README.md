@@ -33,7 +33,7 @@ npm install --save-dev jest
 
 ### 5. Implementar o código utiliza node.js
 
-### Arquivo: `src/cep.js`
+#### Arquivo: `src/cep.js`
 
 ```javascript
 const axios = require("axios");
@@ -58,7 +58,7 @@ module.exports = { Validar_CEP, getEnderecoCep };
 
 ### Testes Unitário:
 
-### Arquivo: `tests/unidade.test.js`
+#### Arquivo: `tests/unidade.test.js`
 
 ```javascript
 const { Validar_CEP } = require("../src/cep");
@@ -76,7 +76,7 @@ describe("Teste entre válido e inválido do CEP", () => {
 
 ### Testes de Integração:
 
-### Arquivo: `tests/integracao.test.js`
+#### Arquivo: `tests/integracao.test.js`
 
 ```javascript
 const { getEnderecoCep } = require("../src/cep");
@@ -104,7 +104,7 @@ describe("Teste o número do CEP", () => {
 
 Adicione `.gitignore` colocar NODE do repositório, comando git pull origin main o para diretório de código.
 
-### Arquivo `.gitignore`
+#### Arquivo `.gitignore`
 
 ```bash
 # Logs
@@ -253,7 +253,7 @@ git push origin master
 
 ### Configuração do GitHub Actions
 
-### Arquivo: `.github/workflows/cicd.yml`
+#### Arquivo: `.github/workflows/cicd.yml`
 
 ```yaml
 name: CI
