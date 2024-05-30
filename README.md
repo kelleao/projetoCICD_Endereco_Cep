@@ -280,12 +280,12 @@ jobs:
 
 ### Como Funciona a Pipeline de CI/CD
 
-A pipeline de integração contiuna é a configurada, passar executado e comando push para o branch direto para GitHub. O fluxo de trabalho como implementa
+A pipeline de integração contiuna é a configurada, passar executado e comando push para o branch no GitHub. O fluxo de trabalho como implementa
 
 1. Usar checkout,
 2. Configurar o node na versão 20.13.1,
 3. Instalar a despendencia,
-4. Executar o teste unidad,
+4. Executar o teste unidade,
 5. Executar o teste interagração.
 
 ### Referências
